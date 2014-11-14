@@ -1,7 +1,0 @@
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\ProyectoAgencia\DALC\bin\Debug\DALC.dll.config
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\ProyectoAgencia\DALC\bin\Debug\DALC.dll
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\ProyectoAgencia\DALC\bin\Debug\DALC.pdb
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\ProyectoAgencia\DALC\bin\Debug\EntityFramework.dll
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\ProyectoAgencia\DALC\bin\Debug\EntityFramework.xml
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\ProyectoAgencia\DALC\obj\Debug\DALC.dll
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\ProyectoAgencia\DALC\obj\Debug\DALC.pdb
