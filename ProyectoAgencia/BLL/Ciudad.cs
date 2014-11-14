@@ -11,7 +11,7 @@ namespace BLL
         public string NOMBRE { get; set; }
         public decimal ID_CIUDAD { get; set; }
 
-        public bool crear()
+        public bool insert()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace BLL
             }
         }
 
-        public bool modificar()
+        public bool update()
         {
             try
             {
