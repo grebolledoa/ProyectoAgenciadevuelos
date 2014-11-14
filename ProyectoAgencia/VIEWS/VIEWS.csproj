@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cliente.aspx" />
     <Content Include="dist\css\bootstrap-theme.css" />
     <Content Include="dist\css\bootstrap-theme.min.css" />
     <Content Include="dist\css\bootstrap.css" />
@@ -66,15 +67,31 @@
     <Content Include="dist\js\bootstrap.min.js" />
     <Content Include="dist\js\npm.js" />
     <Content Include="index.aspx" />
+    <Content Include="pasaje.aspx" />
+    <Content Include="vuelo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cliente.aspx.cs">
+      <DependentUpon>cliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cliente.aspx.designer.cs">
+      <DependentUpon>cliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pasaje.aspx.cs">
+      <DependentUpon>pasaje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pasaje.aspx.designer.cs">
+      <DependentUpon>pasaje.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SitioMaestro.Master.cs">
@@ -83,6 +100,13 @@
     </Compile>
     <Compile Include="SitioMaestro.Master.designer.cs">
       <DependentUpon>SitioMaestro.Master</DependentUpon>
+    </Compile>
+    <Compile Include="vuelo.aspx.cs">
+      <DependentUpon>vuelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vuelo.aspx.designer.cs">
+      <DependentUpon>vuelo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

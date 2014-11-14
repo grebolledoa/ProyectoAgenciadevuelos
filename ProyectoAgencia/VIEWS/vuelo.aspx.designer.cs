@@ -10,6 +10,6 @@
 namespace VIEWS {
     
     
-    public partial class index {
+    public partial class vuelo {
     }
 }
