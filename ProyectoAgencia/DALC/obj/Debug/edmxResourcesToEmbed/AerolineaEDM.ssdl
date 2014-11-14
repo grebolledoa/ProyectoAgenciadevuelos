@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AerolineaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="CIUDAD">
+    <Key>
+      <PropertyRef Name="ID_CIUDAD" />
+    </Key>
+    <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_CIUDAD" Type="numeric" Precision="7" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="RUT" />
+    </Key>
+    <Property Name="RUT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="TELEFONO" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="TELEFONO_EMERGENCIA" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="EMAIL_EMERGENCIA" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PASAJE">
+    <Key>
+      <PropertyRef Name="NUMERO_ASIENTO" />
+      <PropertyRef Name="HORA" />
+    </Key>
+    <Property Name="RUT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NUMERO_ASIENTO" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="HORA" Type="datetime" Nullable="false" />
+    <Property Name="FECHA" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TRAMO">
+    <Key>
+      <PropertyRef Name="HORA" />
+      <PropertyRef Name="ID_CIUDAD" />
+    </Key>
+    <Property Name="HORA" Type="datetime" Nullable="false" />
+    <Property Name="ID_CIUDAD" Type="numeric" Precision="7" Scale="0" Nullable="false" />
+    <Property Name="valor" Type="numeric" Precision="7" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VUELO">
+    <Key>
+      <PropertyRef Name="HORA" />
+    </Key>
+    <Property Name="ID_VUELO" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="HORA" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PASAJE_RELATIONS_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="PASAJE" Type="Self.PASAJE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="RUT" />
+      </Principal>
+      <Dependent Role="PASAJE">
+        <PropertyRef Name="RUT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PASAJE_RELATIONS_VUELO">
+    <End Role="VUELO" Type="Self.VUELO" Multiplicity="1" />
+    <End Role="PASAJE" Type="Self.PASAJE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VUELO">
+        <PropertyRef Name="HORA" />
+      </Principal>
+      <Dependent Role="PASAJE">
+        <PropertyRef Name="HORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRAMO_RELATIONS_CIUDAD">
+    <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="1" />
+    <End Role="TRAMO" Type="Self.TRAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDAD">
+        <PropertyRef Name="ID_CIUDAD" />
+      </Principal>
+      <Dependent Role="TRAMO">
+        <PropertyRef Name="ID_CIUDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRAMO_RELATIONS_VUELO">
+    <End Role="VUELO" Type="Self.VUELO" Multiplicity="1" />
+    <End Role="TRAMO" Type="Self.TRAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VUELO">
+        <PropertyRef Name="HORA" />
+      </Principal>
+      <Dependent Role="TRAMO">
+        <PropertyRef Name="HORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AerolineaModelStoreContainer">
+    <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PASAJE" EntityType="Self.PASAJE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRAMO" EntityType="Self.TRAMO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VUELO" EntityType="Self.VUELO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PASAJE_RELATIONS_CLIENTE" Association="Self.FK_PASAJE_RELATIONS_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="PASAJE" EntitySet="PASAJE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PASAJE_RELATIONS_VUELO" Association="Self.FK_PASAJE_RELATIONS_VUELO">
+      <End Role="VUELO" EntitySet="VUELO" />
+      <End Role="PASAJE" EntitySet="PASAJE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRAMO_RELATIONS_CIUDAD" Association="Self.FK_TRAMO_RELATIONS_CIUDAD">
+      <End Role="CIUDAD" EntitySet="CIUDAD" />
+      <End Role="TRAMO" EntitySet="TRAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRAMO_RELATIONS_VUELO" Association="Self.FK_TRAMO_RELATIONS_VUELO">
+      <End Role="VUELO" EntitySet="VUELO" />
+      <End Role="TRAMO" EntitySet="TRAMO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

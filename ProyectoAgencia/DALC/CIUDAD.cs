@@ -16,12 +16,12 @@ namespace DALC
     {
         public CIUDAD()
         {
-            this.VUELO = new HashSet<VUELO>();
+            this.TRAMO = new HashSet<TRAMO>();
         }
     
         public string NOMBRE { get; set; }
         public decimal ID_CIUDAD { get; set; }
     
-        public virtual ICollection<VUELO> VUELO { get; set; }
+        public virtual ICollection<TRAMO> TRAMO { get; set; }
     }
 }

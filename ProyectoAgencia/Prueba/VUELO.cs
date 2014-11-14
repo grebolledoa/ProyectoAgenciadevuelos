@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DALC
+namespace Prueba
 {
     using System;
     using System.Collections.Generic;
@@ -17,13 +17,14 @@ namespace DALC
         public VUELO()
         {
             this.PASAJE = new HashSet<PASAJE>();
-            this.TRAMO = new HashSet<TRAMO>();
+            this.CIUDAD = new HashSet<CIUDAD>();
         }
     
         public decimal ID_VUELO { get; set; }
         public System.DateTime HORA { get; set; }
+        public decimal VALOR { get; set; }
     
         public virtual ICollection<PASAJE> PASAJE { get; set; }
-        public virtual ICollection<TRAMO> TRAMO { get; set; }
+        public virtual ICollection<CIUDAD> CIUDAD { get; set; }
     }
 }

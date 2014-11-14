@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DALC
+namespace Prueba
 {
     using System;
     using System.Data.Entity;

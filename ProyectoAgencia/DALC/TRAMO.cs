@@ -12,18 +12,13 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class VUELO
+    public partial class TRAMO
     {
-        public VUELO()
-        {
-            this.PASAJE = new HashSet<PASAJE>();
-            this.TRAMO = new HashSet<TRAMO>();
-        }
-    
-        public decimal ID_VUELO { get; set; }
         public System.DateTime HORA { get; set; }
+        public decimal ID_CIUDAD { get; set; }
+        public decimal valor { get; set; }
     
-        public virtual ICollection<PASAJE> PASAJE { get; set; }
-        public virtual ICollection<TRAMO> TRAMO { get; set; }
+        public virtual CIUDAD CIUDAD { get; set; }
+        public virtual VUELO VUELO { get; set; }
     }
 }

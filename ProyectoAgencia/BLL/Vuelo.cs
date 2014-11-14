@@ -5,7 +5,9 @@ using System.Text;
 
 namespace BLL
 {
-    public class Class1
+    public class Vuelo
     {
+        public decimal ID_VUELO { get; set; }
+        public System.DateTime HORA { get; set; }
     }
 }

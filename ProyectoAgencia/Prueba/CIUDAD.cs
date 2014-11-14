@@ -7,23 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DALC
+namespace Prueba
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class VUELO
+    public partial class CIUDAD
     {
-        public VUELO()
+        public CIUDAD()
         {
-            this.PASAJE = new HashSet<PASAJE>();
-            this.TRAMO = new HashSet<TRAMO>();
+            this.VUELO = new HashSet<VUELO>();
         }
     
-        public decimal ID_VUELO { get; set; }
-        public System.DateTime HORA { get; set; }
+        public string NOMBRE { get; set; }
+        public decimal ID_CIUDAD { get; set; }
     
-        public virtual ICollection<PASAJE> PASAJE { get; set; }
-        public virtual ICollection<TRAMO> TRAMO { get; set; }
+        public virtual ICollection<VUELO> VUELO { get; set; }
     }
 }
