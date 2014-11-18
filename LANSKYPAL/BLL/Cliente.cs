@@ -18,8 +18,7 @@ namespace BLL
 
         public bool insert()
         {
-            try
-            {
+
                 CLIENTE cl = new CLIENTE();
 
                 cl.RUT = this.rut;
@@ -35,11 +34,8 @@ namespace BLL
                 Comun.modeloAerolinea.SaveChanges();
 
                 return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+
+            
         }
         public bool update()
         {

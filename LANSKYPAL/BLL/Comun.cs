@@ -14,7 +14,7 @@ namespace BLL
             get{
                 if (_modeloAerolinea == null)
                 {
-                    _modeloAerolinea = new AerolineaEntities;
+                    _modeloAerolinea = new AerolineaEntities();
                 }
                 return _modeloAerolinea;
             }
