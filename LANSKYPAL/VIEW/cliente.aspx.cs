@@ -20,7 +20,7 @@ namespace VIEW
 
                 Cliente cl = new Cliente();
 
-                cl.rut = tbRut.Text;
+                cl.rut = tbRut.Text.Replace(".","");
                 cl.nombre = tbTelefono.Text;
                 cl.direccion = tbDireccion.Text;
                 cl.email = tbEmail.Text;
@@ -28,14 +28,6 @@ namespace VIEW
                 cl.telefono = Convert.ToInt32(tbTelefono.Text);
                 cl.telefono_emergencia = Convert.ToInt32(tbTelefonoEmergencia.Text);
 
-                if (cl.insert())
-                {
-                    tbRut.Text = "si";
-                }
-                else
-                {
-                    tbRut.Text = "no";
-                }
                 
                 
         }

@@ -21,7 +21,7 @@ namespace BLL
 
                 CLIENTE cl = new CLIENTE();
 
-                cl.RUT = this.rut;
+                cl.RUT = this.rut.Replace(".","");
                 cl.NOMBRE = this.nombre;
                 cl.DIRECCION = this.direccion;
                 cl.TELEFONO = this.telefono;
