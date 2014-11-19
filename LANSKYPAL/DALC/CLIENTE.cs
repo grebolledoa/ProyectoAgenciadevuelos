@@ -18,7 +18,7 @@ namespace DALC
         {
             this.PASAJE = new HashSet<PASAJE>();
         }
-    
+        
         public string RUT { get; set; }
         public string NOMBRE { get; set; }
         public string DIRECCION { get; set; }

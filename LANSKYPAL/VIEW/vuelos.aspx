@@ -15,18 +15,18 @@
         </ol>
     </header>
     <div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <p class="text-center">
-                <asp:Button ID="Button1" runat="server" Text="Agregar" class="btn btn-primary" OnClick="Button1_Click"/>
-                <asp:Button ID="Button2" runat="server" Text="Modificar" class="btn btn-success" OnClick="Button2_Click"/>
-                <asp:Button ID="Button3" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="Button3_Click"/>
-            </p>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <p class="text-center">
+                    <asp:Button ID="Button1" runat="server" Text="Agregar" class="btn btn-primary" OnClick="Button1_Click"/>
+                    <asp:Button ID="Button2" runat="server" Text="Modificar" class="btn btn-success" OnClick="Button2_Click"/>
+                    <asp:Button ID="Button3" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="Button3_Click"/>
+                </p>
+            </div>
         </div>
     </div>
-        </div>
-    <asp:Panel ID="pnl_agregar" runat="server" CssClass="hidden">
+    <asp:Panel ID="pnl_agregar" runat="server" CssClass="">
         <div class="row">
         <div class="col-md-4"> </div>
         <div class="col-md-4 jumbotron form-horizontal" role="form">   
@@ -57,7 +57,7 @@
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-4 control-label">Registre Valor</label>
                 <div class="col-lg-7">
-                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="tbValor" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div> 
             <div class="form-group">
@@ -68,7 +68,6 @@
             </div>
         </div>
         </div>
-
     </asp:Panel>
 
     <asp:Panel ID="pnl_modificar" runat="server" CssClass="hidden">

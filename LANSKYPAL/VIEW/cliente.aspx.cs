@@ -17,19 +17,25 @@ namespace VIEW
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            Cliente c = new Cliente();
+            c.nombre = this.tbNombre.Text;
+            c.direccion = this.tbDireccion.Text;
+            c.telefono = int.Parse(this.tbTelefono.Text);
+            c.telefono_emergencia = int.Parse(this.tbTelefonoEmergencia.Text);
+            c.email = this.tbEmail.Text;
+            c.email_emergencia = this.tbEmailEmergencia.Text;
+            c.rut = this.tbRut.Text.Replace(".", "");
 
-                Cliente cl = new Cliente();
-
-                cl.rut = tbRut.Text.Replace(".","");
-                cl.nombre = tbTelefono.Text;
-                cl.direccion = tbDireccion.Text;
-                cl.email = tbEmail.Text;
-                cl.email_emergencia = tbEmailEmergencia.Text;
-                cl.telefono = Convert.ToInt32(tbTelefono.Text);
-                cl.telefono_emergencia = Convert.ToInt32(tbTelefonoEmergencia.Text);
-
-                
-                
+            c.insert();
         }
+
+        protected void btnAgregar1_Click(object sender, EventArgs e)
+        {
+            this.Panel1.CssClass = " ";
+            this.Panel1.DataBind();
+        }
+
+
+
     }
 }

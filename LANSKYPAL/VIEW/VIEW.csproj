@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cliente.aspx" />
+    <Content Include="ModificarCliente.aspx" />
     <Content Include="dis\css\bootstrap-theme.css" />
     <Content Include="dis\css\bootstrap-theme.min.css" />
     <Content Include="dis\css\bootstrap.css" />
@@ -86,6 +87,13 @@
     </Compile>
     <Compile Include="cliente.aspx.designer.cs">
       <DependentUpon>cliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarCliente.aspx.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarCliente.aspx.designer.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

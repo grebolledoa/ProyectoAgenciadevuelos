@@ -78,5 +78,27 @@ namespace BLL
                 return false;
             }
         }
+        public static Cliente buscar(string rut)
+        {
+            try
+            {
+                CLIENTE cl = Comun.modeloAerolinea.CLIENTE.First(
+                        cll => cll.RUT == rut
+                    );
+
+                Cliente c = new Cliente();
+                c.rut = cl.RUT;
+                c.nombre = cl.NOMBRE;
+                c.direccion = cl.DIRECCION;
+                c.telefono = cl.TELEFONO;
+                c.email = cl.EMAIL;
+                c.telefono_emergencia = cl.TELEFONO_EMERGENCIA;
+                c.email_emergencia = cl.EMAIL_EMERGENCIA;
+
+                return c; 
+            }catch(Exception ex){
+                return null;
+            }
+        }
     }
 }
