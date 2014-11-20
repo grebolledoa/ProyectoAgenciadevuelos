@@ -132,7 +132,7 @@ go
 /*==============================================================*/
 create table PASAJE (
    ID_VUELO             varchar(5)           not null,
-   HORA                 datetime             not null,
+   HORA                 time(7)              not null,
    N_ASIENTO            decimal(3)           not null,
    RUT                  varchar(10)          not null,
    FECHA                datetime             not null,
@@ -162,7 +162,7 @@ go
 /*==============================================================*/
 create table VUELO (
    ID_VUELO             varchar(5)           not null,
-   HORA                 datetime             not null,
+   HORA                 time(7)              not null,
    ID_CIUDAD            varchar(3)           not null,
    CIU_ID_CIUDAD        varchar(3)           not null,
    VALOR                decimal(7)           not null,

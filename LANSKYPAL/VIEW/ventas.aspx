@@ -18,7 +18,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-4 jumbotron form-horizontal" role="form">   
              <div class="form-group">
-            <label for="inputPassword" class="col-lg-4 control-label">Registre Cliente</label>
+            <label for="inputPassword" class="col-lg-4 control-label">Seleccione Cliente</label>
                 <div class="col-lg-7">
                       <asp:DropDownList ID="ddl_rut" runat="server" DataSourceID="SqlDataSource1" DataTextField="RUT" DataValueField="RUT"></asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=Gustavo;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RUT] FROM [CLIENTE]"></asp:SqlDataSource>

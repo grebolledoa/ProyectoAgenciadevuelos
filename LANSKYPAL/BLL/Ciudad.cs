@@ -67,5 +67,23 @@ namespace BLL
                 return false;
             }
         }
+
+        public Ciudad ciudad()
+        {
+            try
+            {
+                CIUDAD cl = Comun.modeloAerolinea.CIUDAD.First(
+                        cll => cll.ID_CIUDAD == this.id_ciudad
+                    );
+
+                Ciudad c = new Ciudad();
+                c.id_ciudad = cl.ID_CIUDAD;
+                c.nombre_ciudad = cl.NOMBRE_CIUDAD;
+
+                return c; 
+            }catch(Exception ex){
+                return null;
+            }
+        }
     }
 }

@@ -64,8 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ciudades.aspx" />
     <Content Include="cliente.aspx" />
-    <Content Include="ModificarCliente.aspx" />
+    <Content Include="EliminarCiudades.aspx" />
+    <Content Include="Eliminarcliente.aspx" />
+    <Content Include="modificarCiudades.aspx" />
+    <Content Include="modificarCliente.aspx" />
     <Content Include="dis\css\bootstrap-theme.css" />
     <Content Include="dis\css\bootstrap-theme.min.css" />
     <Content Include="dis\css\bootstrap.css" />
@@ -81,6 +85,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ciudades.aspx.cs">
+      <DependentUpon>ciudades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ciudades.aspx.designer.cs">
+      <DependentUpon>ciudades.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cliente.aspx.cs">
       <DependentUpon>cliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -88,12 +99,33 @@
     <Compile Include="cliente.aspx.designer.cs">
       <DependentUpon>cliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModificarCliente.aspx.cs">
-      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    <Compile Include="EliminarCiudades.aspx.cs">
+      <DependentUpon>EliminarCiudades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModificarCliente.aspx.designer.cs">
-      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    <Compile Include="EliminarCiudades.aspx.designer.cs">
+      <DependentUpon>EliminarCiudades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Eliminarcliente.aspx.cs">
+      <DependentUpon>Eliminarcliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Eliminarcliente.aspx.designer.cs">
+      <DependentUpon>Eliminarcliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="modificarCiudades.aspx.cs">
+      <DependentUpon>modificarCiudades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modificarCiudades.aspx.designer.cs">
+      <DependentUpon>modificarCiudades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="modificarCliente.aspx.cs">
+      <DependentUpon>modificarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modificarCliente.aspx.designer.cs">
+      <DependentUpon>modificarCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

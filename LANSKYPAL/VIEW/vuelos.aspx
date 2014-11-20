@@ -19,9 +19,10 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <p class="text-center">
-                    <asp:Button ID="Button1" runat="server" Text="Agregar" class="btn btn-primary" OnClick="Button1_Click"/>
-                    <asp:Button ID="Button2" runat="server" Text="Modificar" class="btn btn-success" OnClick="Button2_Click"/>
-                    <asp:Button ID="Button3" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="Button3_Click"/>
+                    <a href="#" class="btn btn-primary">Agregar</a>
+                    <a href="#" class="btn btn-success">Modificar</a>
+                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="ciudades.aspx" class="btn btn-primary">Ciudades</a>
                 </p>
             </div>
         </div>
@@ -34,36 +35,44 @@
                 <label for="inputPassword" class="col-lg-4 control-label">Registre id</label>
                 <div class="col-lg-7">
                     <asp:TextBox ID="tbId" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="tbID" runat="server" ErrorMessage="Debe Ingresar ID" Text="" Display="Dynamic" CssClass="alert-danger"></asp:RequiredFieldValidator>
                 </div>
             </div> 
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-4 control-label">Registre hora</label>
                 <div class="col-lg-7">
                     <asp:TextBox ID="tbHora" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="tbHora" runat="server" ErrorMessage="Debe Ingresar HORA" Text="" Display="Dynamic" CssClass="alert-danger"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="tbHora" ErrorMessage="Reingrese Hora" Display="Dynamic"  CssClass="alert-danger" ValidationExpression="(0?[0-2])(1?[0-9]):([0-5])([0-9])"></asp:RegularExpressionValidator>
                 </div>
             </div> 
             <div class="form-group">
             <label for="inputPassword" class="col-lg-4 control-label">Ciudad Origen</label>
                 <div class="col-lg-7">
-                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:DropDownList ID="ddl_ID" runat="server" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_CIUDAD" DataValueField="ID_CIUDAD" CssClass="form-control input-mg" ></asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString="Data Source=Gustavo;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ID_CIUDAD], [NOMBRE_CIUDAD] FROM [CIUDAD]"></asp:SqlDataSource>
                 </div>
             </div> 
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-4 control-label">Ciudad Destino</label>
                 <div class="col-lg-7">
-                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_CIUDAD" DataValueField="ID_CIUDAD" CssClass="form-control input-mg" ></asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString="Data Source=Gustavo;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ID_CIUDAD], [NOMBRE_CIUDAD] FROM [CIUDAD]"></asp:SqlDataSource>
                 </div>
             </div> 
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-4 control-label">Registre Valor</label>
                 <div class="col-lg-7">
                     <asp:TextBox ID="tbValor" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="tbValor" runat="server" ErrorMessage="Debe Ingresar Valor" Text="" Display="Dynamic" CssClass="alert-danger"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Rango 20000 - 1000000" ControlToValidate="tbValor" Display="Dynamic" CssClass="alert-danger" MaximumValue="1500000" MinimumValue="20000" Type="Integer"></asp:RangeValidator>
                 </div>
             </div> 
             <div class="form-group">
                  <label for="inputPassword" class="col-lg-6 control-label"><br /></label>
                  <div class="col-md-3">
                     <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-primary xt-center"/>
+                     
                 </div>
             </div>
         </div>

@@ -22,9 +22,9 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <p class="text-center">
-                    <asp:Button ID="btnAgregar1" runat="server" Text="Agregar" class="btn btn-primary" OnClick="btnAgregar1_Click" PostBackUrl="~/ModificarCliente.aspx" />
-                    <a href="ModificarCliente.aspx" class="btn btn-primary">Modificar</a>
-                    <asp:Button ID="btnElimiar1" runat="server" Text="Eliminar" class="btn btn-danger" />
+                    <a href="cliente.aspx" class="btn btn-primary">Agregar</a>
+                    <a href="ModificarCliente.aspx" class="btn btn-success">Modificar</a>
+                    <a href="ModificarCliente.aspx" class="btn btn-danger">Eliminar</a>
                 </p>
             </div>
         </div>

@@ -27,6 +27,8 @@ namespace VIEW
             c.rut = this.tbRut.Text.Replace(".", "");
 
             c.insert();
+
+            Response.Redirect("cliente.aspx");  
         }
 
         protected void btnAgregar1_Click(object sender, EventArgs e)
