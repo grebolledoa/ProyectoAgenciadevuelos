@@ -13,10 +13,10 @@ namespace DALC
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AerolineaEntities : DbContext
+    public partial class Aerolinea : DbContext
     {
-        public AerolineaEntities()
-            : base("name=AerolineaEntities")
+        public Aerolinea()
+            : base("name=Aerolinea")
         {
         }
     
@@ -28,6 +28,7 @@ namespace DALC
         public DbSet<CIUDAD> CIUDAD { get; set; }
         public DbSet<CLIENTE> CLIENTE { get; set; }
         public DbSet<PASAJE> PASAJE { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<VUELO> VUELO { get; set; }
     }
 }

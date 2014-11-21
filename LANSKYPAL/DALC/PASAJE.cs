@@ -15,7 +15,7 @@ namespace DALC
     public partial class PASAJE
     {
         public string ID_VUELO { get; set; }
-        public System.DateTime HORA { get; set; }
+        public System.TimeSpan HORA { get; set; }
         public decimal N_ASIENTO { get; set; }
         public string RUT { get; set; }
         public System.DateTime FECHA { get; set; }

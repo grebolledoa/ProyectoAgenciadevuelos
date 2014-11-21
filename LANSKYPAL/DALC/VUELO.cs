@@ -20,9 +20,9 @@ namespace DALC
         }
     
         public string ID_VUELO { get; set; }
-        public System.DateTime HORA { get; set; }
-        public string ID_CIUDAD_DESTINO { get; set; }
-        public string ID_CIUDAD_ORIGEN { get; set; }
+        public System.TimeSpan HORA { get; set; }
+        public string ID_CIUDAD { get; set; }
+        public string CIU_ID_CIUDAD { get; set; }
         public decimal VALOR { get; set; }
     
         public virtual CIUDAD CIUDAD { get; set; }

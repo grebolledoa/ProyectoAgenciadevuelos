@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AerolineaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="Modelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="CIUDAD">
           <Key>
             <PropertyRef Name="ID_CIUDAD" />
@@ -31,10 +31,20 @@
             <PropertyRef Name="N_ASIENTO" />
           </Key>
           <Property Name="ID_VUELO" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="HORA" Type="datetime" Nullable="false" />
+          <Property Name="HORA" Type="time" Precision="2" Nullable="false" />
           <Property Name="N_ASIENTO" Type="decimal" Precision="3" Scale="0" Nullable="false" />
           <Property Name="RUT" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="FECHA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="VUELO">
           <Key>
@@ -42,9 +52,9 @@
             <PropertyRef Name="HORA" />
           </Key>
           <Property Name="ID_VUELO" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="HORA" Type="datetime" Nullable="false" />
-          <Property Name="ID_CIUDAD_DESTINO" Type="varchar" MaxLength="3" Nullable="false" />
-          <Property Name="ID_CIUDAD_ORIGEN" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="HORA" Type="time" Precision="2" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CIU_ID_CIUDAD" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="VALOR" Type="decimal" Precision="7" Scale="0" Nullable="false" />
         </EntityType>
         <Association Name="FK_PASAJE_COMPRA_CLIENTE">
@@ -81,7 +91,7 @@
               <PropertyRef Name="ID_CIUDAD" />
             </Principal>
             <Dependent Role="VUELO">
-              <PropertyRef Name="ID_CIUDAD_DESTINO" />
+              <PropertyRef Name="ID_CIUDAD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -93,14 +103,15 @@
               <PropertyRef Name="ID_CIUDAD" />
             </Principal>
             <Dependent Role="VUELO">
-              <PropertyRef Name="ID_CIUDAD_ORIGEN" />
+              <PropertyRef Name="CIU_ID_CIUDAD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AerolineaModelStoreContainer">
+        <EntityContainer Name="ModeloStoreContainer">
           <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PASAJE" EntityType="Self.PASAJE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VUELO" EntityType="Self.VUELO" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_PASAJE_COMPRA_CLIENTE" Association="Self.FK_PASAJE_COMPRA_CLIENTE">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
@@ -123,7 +134,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AerolineaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="Modelo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityType Name="CIUDAD">
           <Key>
             <PropertyRef Name="ID_CIUDAD" />
@@ -153,12 +164,22 @@
             <PropertyRef Name="N_ASIENTO" />
           </Key>
           <Property Name="ID_VUELO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HORA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HORA" Type="Time" Nullable="false" Precision="2" />
           <Property Name="N_ASIENTO" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
           <Property Name="RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FK_PASAJE_COMPRA_CLIENTE" FromRole="PASAJE" ToRole="CLIENTE" />
           <NavigationProperty Name="VUELO" Relationship="Self.FK_PASAJE_REGISTRA_VUELO" FromRole="PASAJE" ToRole="VUELO" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="VUELO">
           <Key>
@@ -166,9 +187,9 @@
             <PropertyRef Name="HORA" />
           </Key>
           <Property Name="ID_VUELO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HORA" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ID_CIUDAD_DESTINO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_CIUDAD_ORIGEN" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HORA" Type="Time" Nullable="false" Precision="2" />
+          <Property Name="ID_CIUDAD" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIU_ID_CIUDAD" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VALOR" Type="Decimal" Precision="7" Scale="0" Nullable="false" />
           <NavigationProperty Name="CIUDAD" Relationship="Self.FK_VUELO_DESTINO_CIUDAD" FromRole="VUELO" ToRole="CIUDAD" />
           <NavigationProperty Name="CIUDAD1" Relationship="Self.FK_VUELO_ORIGEN_CIUDAD" FromRole="VUELO" ToRole="CIUDAD" />
@@ -182,7 +203,7 @@
               <PropertyRef Name="ID_CIUDAD" />
             </Principal>
             <Dependent Role="VUELO">
-              <PropertyRef Name="ID_CIUDAD_DESTINO" />
+              <PropertyRef Name="ID_CIUDAD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -194,7 +215,7 @@
               <PropertyRef Name="ID_CIUDAD" />
             </Principal>
             <Dependent Role="VUELO">
-              <PropertyRef Name="ID_CIUDAD_ORIGEN" />
+              <PropertyRef Name="CIU_ID_CIUDAD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -224,10 +245,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AerolineaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Aerolinea" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
           <EntitySet Name="PASAJE" EntityType="Self.PASAJE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="VUELO" EntityType="Self.VUELO" />
           <AssociationSet Name="FK_VUELO_DESTINO_CIUDAD" Association="Self.FK_VUELO_DESTINO_CIUDAD">
             <End Role="CIUDAD" EntitySet="CIUDAD" />
@@ -251,9 +273,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AerolineaModelStoreContainer" CdmEntityContainer="AerolineaEntities">
+        <EntityContainerMapping StorageEntityContainer="ModeloStoreContainer" CdmEntityContainer="Aerolinea">
           <EntitySetMapping Name="CIUDAD">
-            <EntityTypeMapping TypeName="AerolineaModel.CIUDAD">
+            <EntityTypeMapping TypeName="Modelo.CIUDAD">
               <MappingFragment StoreEntitySet="CIUDAD">
                 <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
                 <ScalarProperty Name="NOMBRE_CIUDAD" ColumnName="NOMBRE_CIUDAD" />
@@ -261,7 +283,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CLIENTE">
-            <EntityTypeMapping TypeName="AerolineaModel.CLIENTE">
+            <EntityTypeMapping TypeName="Modelo.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="RUT" ColumnName="RUT" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
@@ -274,7 +296,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PASAJE">
-            <EntityTypeMapping TypeName="AerolineaModel.PASAJE">
+            <EntityTypeMapping TypeName="Modelo.PASAJE">
               <MappingFragment StoreEntitySet="PASAJE">
                 <ScalarProperty Name="ID_VUELO" ColumnName="ID_VUELO" />
                 <ScalarProperty Name="HORA" ColumnName="HORA" />
@@ -284,13 +306,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Modelo.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="VUELO">
-            <EntityTypeMapping TypeName="AerolineaModel.VUELO">
+            <EntityTypeMapping TypeName="Modelo.VUELO">
               <MappingFragment StoreEntitySet="VUELO">
                 <ScalarProperty Name="ID_VUELO" ColumnName="ID_VUELO" />
                 <ScalarProperty Name="HORA" ColumnName="HORA" />
-                <ScalarProperty Name="ID_CIUDAD_DESTINO" ColumnName="ID_CIUDAD_DESTINO" />
-                <ScalarProperty Name="ID_CIUDAD_ORIGEN" ColumnName="ID_CIUDAD_ORIGEN" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="CIU_ID_CIUDAD" ColumnName="CIU_ID_CIUDAD" />
                 <ScalarProperty Name="VALOR" ColumnName="VALOR" />
               </MappingFragment>
             </EntityTypeMapping>

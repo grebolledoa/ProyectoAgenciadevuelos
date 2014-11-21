@@ -66,8 +66,10 @@
   <ItemGroup>
     <Content Include="ciudades.aspx" />
     <Content Include="cliente.aspx" />
+    <Content Include="ClientesPorVuelo.aspx" />
     <Content Include="EliminarCiudades.aspx" />
     <Content Include="Eliminarcliente.aspx" />
+    <Content Include="EliminarVuelo.aspx" />
     <Content Include="modificarCiudades.aspx" />
     <Content Include="modificarCliente.aspx" />
     <Content Include="dis\css\bootstrap-theme.css" />
@@ -80,6 +82,7 @@
     <Content Include="dis\js\npm.js" />
     <Content Include="img\avion-moviles.jpg" />
     <Content Include="index.aspx" />
+    <Content Include="modificarVuelo.aspx" />
     <Content Include="ventas.aspx" />
     <Content Include="vuelos.aspx" />
     <Content Include="Web.config" />
@@ -99,6 +102,13 @@
     <Compile Include="cliente.aspx.designer.cs">
       <DependentUpon>cliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ClientesPorVuelo.aspx.cs">
+      <DependentUpon>ClientesPorVuelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClientesPorVuelo.aspx.designer.cs">
+      <DependentUpon>ClientesPorVuelo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EliminarCiudades.aspx.cs">
       <DependentUpon>EliminarCiudades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,6 +122,13 @@
     </Compile>
     <Compile Include="Eliminarcliente.aspx.designer.cs">
       <DependentUpon>Eliminarcliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarVuelo.aspx.cs">
+      <DependentUpon>EliminarVuelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarVuelo.aspx.designer.cs">
+      <DependentUpon>EliminarVuelo.aspx</DependentUpon>
     </Compile>
     <Compile Include="modificarCiudades.aspx.cs">
       <DependentUpon>modificarCiudades.aspx</DependentUpon>
@@ -140,6 +157,13 @@
     </Compile>
     <Compile Include="Maestra.Master.designer.cs">
       <DependentUpon>Maestra.Master</DependentUpon>
+    </Compile>
+    <Compile Include="modificarVuelo.aspx.cs">
+      <DependentUpon>modificarVuelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modificarVuelo.aspx.designer.cs">
+      <DependentUpon>modificarVuelo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ventas.aspx.cs">

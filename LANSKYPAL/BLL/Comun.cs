@@ -8,13 +8,14 @@ namespace BLL
 {
     public class Comun
     {
-        private static AerolineaEntities _modeloAerolinea; 
-
-        public static AerolineaEntities modeloAerolinea{
+        private static Aerolinea _modeloAerolinea;
+        
+        public static Aerolinea modeloAerolinea
+        {
             get{
                 if (_modeloAerolinea == null)
                 {
-                    _modeloAerolinea = new AerolineaEntities();
+                    _modeloAerolinea = new Aerolinea();
                 }
                 return _modeloAerolinea;
             }

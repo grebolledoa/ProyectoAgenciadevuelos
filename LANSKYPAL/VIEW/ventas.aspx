@@ -16,25 +16,52 @@
     </header>
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-4 jumbotron form-horizontal" role="form">   
+        <div class="col-md-5 jumbotron form-horizontal" role="form">   
              <div class="form-group">
             <label for="inputPassword" class="col-lg-4 control-label">Seleccione Cliente</label>
                 <div class="col-lg-7">
                       <asp:DropDownList ID="ddl_rut" runat="server" DataSourceID="SqlDataSource1" DataTextField="RUT" DataValueField="RUT"></asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=Gustavo;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RUT] FROM [CLIENTE]"></asp:SqlDataSource>
-                    <a class="btn btn-primary" href="cliente.aspx" role="button">Agregar</a>
+                        <a class="btn btn-primary" href="cliente.aspx" role="button">Agregar</a>
                 </div>
             </div>     
             <div class="form-group">
-            <label for="inputPassword" class="col-lg-4 control-label">Ciudad Origen</label>
-                <div class="col-lg-7">
-                  <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4">
+                    <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped" GridLines="None"  AutoGenerateColumns="False" DataKeyNames="ID_VUELO,HORA" DataSourceID="SqlDataSource2">
+                        <Columns>
+                            <asp:BoundField DataField="ID_VUELO" HeaderText="ID_VUELO" ReadOnly="True" SortExpression="ID_VUELO"></asp:BoundField>
+                            <asp:BoundField DataField="HORA" HeaderText="HORA" ReadOnly="True" SortExpression="HORA"></asp:BoundField>
+                            <asp:BoundField DataField="ID_CIUDAD" HeaderText="ID_CIUDAD" SortExpression="ID_CIUDAD"></asp:BoundField>
+                            <asp:BoundField DataField="CIU_ID_CIUDAD" HeaderText="CIU_ID_CIUDAD" SortExpression="CIU_ID_CIUDAD"></asp:BoundField>
+                            <asp:BoundField DataField="VALOR" HeaderText="VALOR" SortExpression="VALOR"></asp:BoundField>
+                        </Columns>
+                    </asp:GridView>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString="Data Source=GUSTAVO;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [VUELO]"></asp:SqlDataSource>
                 </div>
             </div>
             <div class="form-group">
-            <label for="inputPassword" class="col-lg-4 control-label">Ciudad Destino</label>
+            <label for="inputPassword" class="col-lg-4 control-label">Seleccione id</label>
                 <div class="col-lg-7">
-                  <input type="password" class="form-control" id="Password1" placeholder="Contraseña">
+                    <asp:DropDownList ID="ddlID" CssClass="form-control input-mg"  runat="server" DataSourceID="SqlDataSource3" DataTextField="ID_VUELO" DataValueField="ID_VUELO"></asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource3" ConnectionString="Data Source=GUSTAVO;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ID_VUELO] FROM [VUELO]"></asp:SqlDataSource>
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="inputPassword" class="col-lg-4 control-label">Seleccione Hora</label>
+                <div class="col-lg-7">
+                    <asp:DropDownList ID="ddlHora" CssClass="form-control input-mg"  runat="server" DataSourceID="SqlDataSource4" DataTextField="HORA" DataValueField="HORA"></asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource4" ConnectionString="Data Source=GUSTAVO;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [HORA] FROM [VUELO] WHERE ([ID_VUELO] = @ID_VUELO)">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddlID" PropertyName="SelectedValue" Name="ID_VUELO" Type="String"></asp:ControlParameter>
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="inputPassword" class="col-lg-4 control-label">Seleccione Asiento</label>
+                <div class="col-lg-7">
+                    <asp:DropDownList ID="ddl_asientos" runat="server"></asp:DropDownList>
                 </div>
             </div>
             <div class="form-group">
@@ -53,6 +80,7 @@
             </div>
         </div>
     </div>
+    
 
     
     

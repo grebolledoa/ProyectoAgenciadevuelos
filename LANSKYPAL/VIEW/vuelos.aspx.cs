@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BLL;
 
 namespace VIEW
 {
@@ -11,37 +12,43 @@ namespace VIEW
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                ddlDestino.SelectedIndex = 1;
+            }
+            catch (Exception ex)
+            {
+                ddlDestino.SelectedIndex = 0;
+            }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            this.pnl_modificar.CssClass = "hidden";
-            this.pnl_modificar.DataBind();
-            this.pnl_eliminar.CssClass = "hidden";
-            this.pnl_eliminar.DataBind();
-            this.pnl_agregar.CssClass = "";
-            this.pnl_agregar.DataBind();
-        }
 
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            this.pnl_agregar.CssClass = "hidden";
-            this.pnl_agregar.DataBind();
-            this.pnl_eliminar.CssClass = "hidden";
-            this.pnl_eliminar.DataBind();
-            this.pnl_modificar.CssClass = "";
-            this.pnl_modificar.DataBind();
-        }
+            if (!ddlDestino.Text.Equals(ddlOrigen.Text))
+            {
+                Vuelo v = new Vuelo();
 
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            this.pnl_agregar.CssClass = "hidden";
-            this.pnl_agregar.DataBind();
-            this.pnl_eliminar.CssClass = "";
-            this.pnl_eliminar.DataBind();
-            this.pnl_modificar.CssClass = "hidden";
-            this.pnl_modificar.DataBind();
+                v.id_vuelo = tbId.Text;
+                v.HORA = TimeSpan.Parse(tbHora.Text.ToString());
+                v.id_ciudad_origen = ddlOrigen.SelectedValue.ToString();
+                v.id_ciudad_destino = ddlDestino.SelectedValue.ToString();
+                v.valor = decimal.Parse(tbValor.Text);
+
+                if (v.insert())
+                {
+                    Response.Redirect("vuelos.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>window.alert('Vuelo no Insertado');</script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>window.alert('Eliga Ciudades Distintas');</script>");
+            }
+            
         }
     }
 }

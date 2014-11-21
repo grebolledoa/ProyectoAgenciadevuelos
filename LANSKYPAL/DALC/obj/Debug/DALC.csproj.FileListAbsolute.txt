@@ -3,6 +3,5 @@ C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\DALC\bin\Debug\DALC
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\DALC\bin\Debug\DALC.pdb
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\DALC\bin\Debug\EntityFramework.dll
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\DALC\bin\Debug\EntityFramework.xml
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\DALC\obj\Debug\DALC.csprojResolveAssemblyReference.cache
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\DALC\obj\Debug\DALC.dll
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\DALC\obj\Debug\DALC.pdb

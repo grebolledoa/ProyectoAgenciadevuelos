@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AerolineaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+<Schema Namespace="Modelo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
   <EntityType Name="CIUDAD">
     <Key>
       <PropertyRef Name="ID_CIUDAD" />
@@ -29,12 +29,22 @@
       <PropertyRef Name="N_ASIENTO" />
     </Key>
     <Property Name="ID_VUELO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="HORA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HORA" Type="Time" Nullable="false" Precision="2" />
     <Property Name="N_ASIENTO" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
     <Property Name="RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="CLIENTE" Relationship="Self.FK_PASAJE_COMPRA_CLIENTE" FromRole="PASAJE" ToRole="CLIENTE" />
     <NavigationProperty Name="VUELO" Relationship="Self.FK_PASAJE_REGISTRA_VUELO" FromRole="PASAJE" ToRole="VUELO" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="VUELO">
     <Key>
@@ -42,9 +52,9 @@
       <PropertyRef Name="HORA" />
     </Key>
     <Property Name="ID_VUELO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="HORA" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ID_CIUDAD_DESTINO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ID_CIUDAD_ORIGEN" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HORA" Type="Time" Nullable="false" Precision="2" />
+    <Property Name="ID_CIUDAD" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CIU_ID_CIUDAD" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="VALOR" Type="Decimal" Precision="7" Scale="0" Nullable="false" />
     <NavigationProperty Name="CIUDAD" Relationship="Self.FK_VUELO_DESTINO_CIUDAD" FromRole="VUELO" ToRole="CIUDAD" />
     <NavigationProperty Name="CIUDAD1" Relationship="Self.FK_VUELO_ORIGEN_CIUDAD" FromRole="VUELO" ToRole="CIUDAD" />
@@ -58,7 +68,7 @@
         <PropertyRef Name="ID_CIUDAD" />
       </Principal>
       <Dependent Role="VUELO">
-        <PropertyRef Name="ID_CIUDAD_DESTINO" />
+        <PropertyRef Name="ID_CIUDAD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -70,7 +80,7 @@
         <PropertyRef Name="ID_CIUDAD" />
       </Principal>
       <Dependent Role="VUELO">
-        <PropertyRef Name="ID_CIUDAD_ORIGEN" />
+        <PropertyRef Name="CIU_ID_CIUDAD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -100,10 +110,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="AerolineaEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Aerolinea" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" />
     <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
     <EntitySet Name="PASAJE" EntityType="Self.PASAJE" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="VUELO" EntityType="Self.VUELO" />
     <AssociationSet Name="FK_VUELO_DESTINO_CIUDAD" Association="Self.FK_VUELO_DESTINO_CIUDAD">
       <End Role="CIUDAD" EntitySet="CIUDAD" />

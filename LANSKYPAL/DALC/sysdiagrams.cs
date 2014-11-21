@@ -12,21 +12,12 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class CLIENTE
+    public partial class sysdiagrams
     {
-        public CLIENTE()
-        {
-            this.PASAJE = new HashSet<PASAJE>();
-        }
-    
-        public string RUT { get; set; }
-        public string NOMBRE { get; set; }
-        public string DIRECCION { get; set; }
-        public decimal TELEFONO { get; set; }
-        public decimal TELEFONO_EMERGENCIA { get; set; }
-        public string EMAIL { get; set; }
-        public string EMAIL_EMERGENCIA { get; set; }
-    
-        public virtual ICollection<PASAJE> PASAJE { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

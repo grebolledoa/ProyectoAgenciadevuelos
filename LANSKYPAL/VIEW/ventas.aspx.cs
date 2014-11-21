@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BLL;
 
 namespace VIEW
 {
@@ -11,7 +12,7 @@ namespace VIEW
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void cliente_Click(object sender, EventArgs e)

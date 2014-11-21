@@ -8,5 +8,5 @@ C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\VIEW\bin\Tde.Contro
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\VIEW\bin\DALC.dll
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\VIEW\bin\EntityFramework.dll
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\VIEW\bin\BLL.pdb
-C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\VIEW\bin\DALC.pdb
 C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\VIEW\bin\EntityFramework.xml
+C:\Users\Gustavo\Documents\ProyectoAgenciadevuelos\LANSKYPAL\VIEW\bin\DALC.pdb

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="vuelos.aspx.cs" Inherits="VIEW.vuelos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="modificarVuelo.aspx.cs" Inherits="VIEW.modificarVuelo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <header>
        <div class="container">
@@ -22,21 +22,38 @@
                     <a href="vuelos.aspx" class="btn btn-primary">Agregar</a>
                     <a href="modificarVuelo.aspx" class="btn btn-success">Modificar</a>
                     <a href="EliminarVuelo.aspx" class="btn btn-danger">Eliminar</a>
-                    <a href="ciudades.aspx" class="btn btn-primary">Ciudades</a>
                 </p>
 
             </div>
         </div>
     </div>
+
     <asp:Panel ID="pnl_agregar" runat="server" CssClass="">
         <div class="row">
         <div class="col-md-4"> </div>
         <div class="col-md-4 jumbotron form-horizontal" role="form">   
             <div class="form-group">
-                <label for="inputPassword" class="col-lg-4 control-label">Registre id</label>
-                <div class="col-lg-7">
-                    <asp:TextBox ID="tbId" runat="server" CssClass="form-control"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="tbID" runat="server" ErrorMessage="Debe Ingresar ID" Text="" Display="Dynamic" CssClass="alert-danger"></asp:RequiredFieldValidator>
+                <label for="inputPassword" class="col-lg-4 control-label">Seleccion id</label>
+                <div class="col-lg-5">
+                    <asp:DropDownList ID="ddlID"  runat="server" CssClass="form-control input-mg" DataSourceID="SqlDataSource3" DataTextField="ID_VUELO" DataValueField="ID_VUELO"></asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource3" ConnectionString="Data Source=GUSTAVO;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ID_VUELO]  FROM [VUELO]"></asp:SqlDataSource>
+                </div>
+                <div class="col-lg-3">
+                    <asp:Button ID="btnCargar" runat="server" Text="cargar" CssClass="btn btn-default xt-center" OnClick="btnCargar_Click"/>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-4 control-label">Seleccione hora</label>
+                <div class="col-lg-5">
+                    <asp:DropDownList ID="ddlHora" runat="server" CssClass="form-control input-mg" DataSourceID="SqlDataSource4" DataTextField="HORA" DataValueField="HORA"></asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource4" ConnectionString="Data Source=GUSTAVO;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [HORA] FROM [VUELO] WHERE ([ID_VUELO] = @ID_VUELO)">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddlID" PropertyName="SelectedValue" Name="ID_VUELO" Type="String"></asp:ControlParameter>
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                </div>
+                <div class="col-lg-3">
+                    <asp:Button ID="btnCargar2" runat="server" Text="cargar" CssClass="btn btn-default xt-center" OnClick="btnCargar2_Click"/>
                 </div>
             </div> 
             <div class="form-group">
@@ -57,7 +74,7 @@
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-4 control-label">Ciudad Destino</label>
                 <div class="col-lg-7">
-                        <asp:DropDownList ID="ddlDestino" runat="server" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_CIUDAD" DataValueField="ID_CIUDAD" CssClass="form-control input-mg" ></asp:DropDownList>
+                    <asp:DropDownList ID="ddlDestino" runat="server" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_CIUDAD" DataValueField="ID_CIUDAD" CssClass="form-control input-mg" ></asp:DropDownList>
                     <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString="Data Source=Gustavo;Initial Catalog=Aerolinea;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ID_CIUDAD], [NOMBRE_CIUDAD] FROM [CIUDAD]"></asp:SqlDataSource>
                 </div>
             </div> 
@@ -72,8 +89,7 @@
             <div class="form-group">
                     <label for="inputPassword" class="col-lg-6 control-label"><br /></label>
                     <div class="col-md-3">
-                    <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-primary xt-center" OnClick="btnAgregar_Click"/>
-                     
+                    <asp:Button ID="btnAgregar" runat="server" Text="Modificar" CssClass="btn btn-primary xt-center" OnClick="btnAgregar_Click"/>
                 </div>
             </div>
         </div>
